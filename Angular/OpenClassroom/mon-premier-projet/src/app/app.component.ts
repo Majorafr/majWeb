@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { resolve } from 'q';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,30 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  
   isAuth = false;
+  lastUpdate = new Promise((resolve, reject) => {
+    const date = new Date();
+    setTimeout(() => {
+      resolve(date);
+    }, 2000
+    );
+  });
+  appareils = [
+    {
+      name: 'Machine à laver',
+      status: 'éteint'
+    },
+    {
+      name: 'Frigo',
+      status: 'allumé'
 
+    },
+    {
+      name:'Ordinateur',
+      status: 'éteint'
+    }
+  ];
   appareilOne = 'Machine à laver';
   appareilTwo = 'Frigo';
   appareilThree = 'Ordinateur';
